@@ -1,0 +1,64 @@
+\documentclass{szte-thesis}
+
+\title{Minta szakdolgozat címe}
+\author{Kiss Péter}
+%\neptun{ABC123}
+
+% bsc / msc / tdk
+\setdegree{bsc}
+
+% titkos-e a szakdolgozat
+\setconfidential{false}
+
+\faculty{TTIK}
+\institute{Informatikai Intézet}
+
+% 1. témavezető tanszéke (rövid forma, pl. Szoftverfejlesztés)
+\department{Szoftverfejlesztés}
+
+\program{Programtervező informatikus}
+%\specialization{Szoftverfejlesztő}
+
+% 1. témavezető
+\supervisor{Dr. Nagy Béla}
+\supervisortitle{egyetemi docens}
+% opcionálisan külön is megadhatod (ha nem a \department értéke kellene):
+% \supervisordepartment{Szoftverfejlesztés}
+
+% 2. témavezető
+%\secondsupervisor{Dr. Kovács Anna}
+%\secondsupervisortitle{adjunktus}
+%\secondsupervisordepartment{Alkalmazott Informatika}
+
+% Konzulens
+\consultant{Nagy János}
+\consultantworkplace{FrontEndArt kft.}
+\consultantposition{Lead developer}
+
+\city{Szeged}
+\thesisyear{2025}
+\thesislogo{img/szte\_logo}
+
+\addbibresource{references.bib}
+
+% Kapcsolók
+\setboolean{showfigures}{true}
+\setboolean{showtables}{true}
+\setboolean{showcode}{true}
+\setboolean{showtodos}{true}
+
+\begin{document}
+	
+	\makecover
+	
+	\tableofcontents
+	
+	\include{chapters/00-basic_commands.tex}
+	
+	\include{chapters/01-introduction.tex}
+	
+	\printdeclaration
+	
+	\printbibliography
+	
+\end{document}

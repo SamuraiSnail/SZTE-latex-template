@@ -1,0 +1,73 @@
+\chapter{Metaadatok es globalis beallitasok}
+
+A dolgozat elejen a \texttt{main.tex}-ben adjuk meg az alapveto adatokat.
+
+\begin{itemize}
+	\item \verb|\title{...}| -- a dolgozat cime
+	\item \verb|\author{...}| -- a hallgato neve
+	\item \verb|\neptun{...}| -- Neptun-kod
+	\item \verb|\setdegree{bsc}|, \verb|\setdegree{msc}|, \verb|\setdegree{tdk}|
+	\item \verb|\setconfidential{true}| vagy \verb|\setconfidential{false}|
+	\item \verb|\program{...}| -- a szak neve
+	\item \verb|\specialization{...}| -- szakirany
+	\item \verb|\department{...}| -- tanszek
+	\item \verb|\supervisor{...}| -- temavezeto neve
+	\item \verb|\supervisortitle{...}| -- temavezeto beosztasa
+\end{itemize}
+
+\begin{codeblock}{TeX}
+	\title{Minta szakdolgozat cime}
+	\author{Kiss Peter}
+	\neptun{ABC123}
+	
+	\setdegree{bsc}
+	\setconfidential{false}
+	
+	\program{Programtervezo informatikus}
+	\specialization{Szoftverfejleszto}
+	\department{Szoftverfejlesztes}
+	
+	\supervisor{Dr. Nagy Bela}
+	\supervisortitle{egyetemi docens}
+\end{codeblock}
+
+\section{TODO megjegyzes}
+
+\begin{codeblock}{TeX}
+	\todoi{Ide meg kell majd egy abra.}
+\end{codeblock}
+
+\todoi{Ide meg kell majd egy abra.}
+
+\section{Abrak}
+
+\begin{codeblock}{TeX}
+	\begin{safefigure}
+		\centering
+		\includegraphics[width=0.4\textwidth]{img/szte_logo}
+		\caption{Minta abra}
+	\end{safefigure}
+\end{codeblock}
+
+\begin{safefigure}
+	\centering
+	\includegraphics[width=0.4\textwidth]{img/szte_logo}
+	\caption{Valodi minta abra}
+\end{safefigure}
+
+\section{Tablazat}
+
+\begin{safetable}
+	\centering
+	\caption{Minta tablazat}
+	\begin{tabular}{c|c}
+		A & B \\ \hline
+		1 & 2 \\
+		3 & 4
+	\end{tabular}
+\end{safetable}
+\newpage
+\section{Kod pelda}
+
+\inputcode[Python Fibonacci]{Python}{code/fibonacci.py}
+\inputcode[Java Fibonacci]{Java}{code/Fibonacci.java}
