@@ -1,0 +1,34 @@
+name: Build LaTeX (SZTE thesis)
+
+on:
+  push:
+    branches: [ master ]
+    paths-ignore:
+      - 'code/**'        # /code alatt történő változásra ne fusson
+  pull_request:
+    branches: [ master ]
+    paths-ignore:
+      - 'code/**'
+
+jobs:
+  build-pdf:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Kód checkout
+        uses: actions/checkout@v4
+
+      - name: TeX Live (full) + biber telepítése
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y texlive-full latexmk biber
+
+      - name: main.tex fordítása PDF-be (bib-bel együtt)
+        run: |
+          latexmk -pdf -interaction=nonstopmode -halt-on-error -file-line-error main.tex
+
+      - name: Generált PDF feltöltése artifactként
+        uses: actions/upload-artifact@v4
+        with:
+          name: szte-thesis-pdf
+          path: main.pdf
