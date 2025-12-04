@@ -1,0 +1,85 @@
+
+\chapter{Irodalomjegyzék és hivatkozások kezelése}
+
+Ebben a fejezetben azt mutatjuk be, hogyan érdemes irodalomjegyzéket készíteni \texttt{biblatex} segítségével.  
+Bemutatjuk, milyen hasznos könyvek és online források érhetők el.  
+Megnézzük, hogyan néz ki egy tétel a \texttt{.bib} fájlban.  
+Áttekintjük, milyen lépésekkel kell fordítani a dokumentumot.  
+
+\section{Hasznos könyvek és online források}
+
+A \LaTeX{} „alapműve” Leslie Lamport könyve, \emph{LaTeX: A Document Preparation System}~\cite{lamport1994}.  
+Ez a könyv részletesen bemutatja a rendszer működését és a tipikus dokumentumok felépítését.  
+
+Haladóbb használathoz hasznos \emph{The \LaTeX\ Companion} második kiadása~\cite{mittelbach2004}.  
+Ez a könyv rengeteg gyakorlati példát ad többek között az irodalomjegyzék-kezelésre is.  
+
+A \texttt{biblatex} csomagnak saját, részletes kézikönyve van~\cite{biblatexmanual}.  
+Ez a dokumentáció elérhető a CTAN-on.  
+Ez írja le a csomag fontos opcióit és a rendelkezésre álló stílusokat.  
+
+Online bevezetőt ad például az Overleaf „Bibliography management with biblatex” című cikke~\cite{overleaf-biblatex}.  
+
+\section{Mi van egy \texttt{.bib} tételben?}
+
+Az irodalomjegyzék forrásai egy \texttt{.bib} fájlban tárolódnak.  
+Minden forrás egy \emph{tétel} (entry), amelynek van típusa és mezői.  
+A típus lehet például \texttt{@book}, \texttt{@article} vagy \texttt{@online}.  
+A mezők jellemzően a szerző, cím, év és kiadó adatokat tartalmazzák.  
+
+Nézzük meg példaként a Lamport-könyv bejegyzését~\cite{lamport1994}.  
+Egy lehetséges \texttt{@book} tétel így néz ki a \texttt{references.bib} fájlban:  
+
+\begin{codeblock}[caption={Egyszerű \texttt{@book} tétel a \texttt{.bib} fájlban}]{TeX}
+@book{lamport1994,
+  author    = {Leslie Lamport},
+  title     = {LaTeX: A Document Preparation System},
+  edition   = {2},
+  publisher = {Addison-Wesley},
+  year      = {1994},
+  address   = {Reading, Massachusetts},
+  isbn      = {978-0201529838},
+}
+\end{codeblock}
+
+A mezők szerepe az alábbi.  
+
+\begin{itemize}
+  \item \verb|lamport1994| a tétel kulcsa. Ezt használjuk a szövegben a \verb|\cite{lamport1994}| parancsban.  
+  \item Az \verb|author| mező a szerző nevét tartalmazza.  
+  \item A \verb|title| mező a mű címét adja meg.  
+  \item Az \verb|edition| mező a kiadás számát tartalmazza.  
+  \item A \verb|publisher| mező a kiadó nevét tárolja.  
+  \item A \verb|year| mező a megjelenés évét adja meg.  
+  \item Az \verb|address| mező a kiadás helyét tartalmazza.  
+  \item Az \verb|isbn| mező a könyv ISBN azonosítója.  
+\end{itemize}
+
+Más típusú tételek hasonló felépítésűek, csak a típus és néhány mező más.  
+Például egy \texttt{@manual} vagy \texttt{@online} tétel esetén az \verb|url| és az \verb|urldate| mező is szerepelhet.  
+
+\section{Hivatkozás a szövegben}
+
+Ha a Lamport-tétel szerepel a \texttt{.bib} fájlban, akkor a szövegben hivatkozhatunk rá.  
+
+\begin{itemize}
+  \item \verb|\cite{lamport1994}| egyszerű hivatkozást hoz létre, például: „A \LaTeX{} rendszer részletes leírását lásd \verb|\cite{lamport1994}|.”  
+  \item \verb|\cite{lamport1994,mittelbach2004}| egyszerre több forrásra hivatkozik.  
+\end{itemize}
+
+A konkrét megjelenési forma a \texttt{biblatex} stílusától függ.  
+A jelen sablonban az \texttt{ieee} stílus van beállítva, ezért sorszámozott, szögletes zárójeles hivatkozásokat kapunk.  
+
+\section{Fordítási lépések \texttt{biblatex} + \texttt{biber} használatakor}
+
+A \texttt{biblatex} alapértelmezetten a \texttt{biber} programot használja a feldolgozáshoz.  
+Ez eltér a régi \texttt{bibtex}-es munkafolyamattól.  
+
+\begin{enumerate}
+  \item A preambulumban szerepeljen az \verb|\addbibresource{references.bib}| sor.  
+  \item Futtassuk a fordítást: \verb|pdflatex main|.  
+  \item Ezután futtassuk a \verb|biber main| parancsot.  
+  \item Végül futtassuk még kétszer a \verb|pdflatex main| parancsot.  
+\end{enumerate}
+
+Az irodalomjegyzék tényleges kiíratását a \verb|\printbibliography| parancs végzi, amely a \texttt{main.tex} végén található.  

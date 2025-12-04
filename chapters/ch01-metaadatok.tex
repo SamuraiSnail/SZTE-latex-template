@@ -1,0 +1,71 @@
+
+\chapter{Metaadatok}
+
+Ebben a fejezetben a \texttt{szte-thesis} osztályban használt metaadat-parancsokat mutatjuk be.  
+Ezeket tipikusan a \texttt{main.tex} elején adjuk meg, még a \verb|\begin{document}| előtt.  
+
+\section{Alap adatok: cím, szerző, Neptun-kód}
+
+A dolgozat legfontosabb adatai:
+
+\begin{itemize}
+  \item \verb|\title{...}| -- a dolgozat címe,
+  \item \verb|\author{...}| -- a hallgató neve,
+  \item \verb|\neptun{...}| -- a Neptun-kód (ha használni szeretnénk).
+\end{itemize}
+
+\noindent
+A \texttt{code/ch01-metaadatok-main.tex} fájl egy minimális példa ezekre.  
+A kódot a következő módon importáljuk, kikapcsolható kódként:
+
+\inputcode[Minden kötelező metaadat megadása]{TeX}{code/ch01-metaadatok-main.tex}
+
+\section{Fokozat és titkosság}
+
+A dolgozat típusát a \verb|\setdegree| paranccsal adjuk meg:
+
+\begin{itemize}
+  \item \verb|\setdegree{bsc}| -- BSc szakdolgozat,
+  \item \verb|\setdegree{msc}| -- MSc diplomamunka,
+  \item \verb|\setdegree{tdk}| -- TDK dolgozat.
+\end{itemize}
+
+\noindent
+A titkosságot a \verb|\setconfidential{true}| vagy \verb|\setconfidential{false}| parancs állítja be.  
+Ha a szakdolgozat titkosított, akkor az érték \verb|true|, ellenkező esetben \verb|false|.  
+A hozzá tartozó példa a \texttt{code/ch01-degree-confidential.tex} fájlban található:
+
+\inputcode[Fokozat és titkosság beállítása]{TeX}{code/ch01-degree-confidential.tex}
+
+\section{Szak, szakirány, tanszék}
+
+A szakhoz és a szakirányhoz tartozó metaadatokat az alábbi parancsokkal adjuk meg:
+
+\begin{itemize}
+  \item \verb|\program{...}| -- a szak neve,
+  \item \verb|\specialization{...}| -- szakirány,
+  \item \verb|\department{...}| -- az első témavezető tanszéke.
+\end{itemize}
+
+\noindent
+Példa ezek használatára:
+
+\inputcode[Szak, szakirány és tanszék megadása]{TeX}{code/ch01-program-department.tex}
+
+\section{Témavezető és egyéb szereplők}
+
+Az első témavezető, a második témavezető és a konzulens adatai a következő parancsokkal állíthatók be:
+
+\begin{itemize}
+  \item \verb|\supervisor{...}|, \verb|\supervisortitle{...}|,\\
+   \verb|\supervisordepartment{...}|,
+  \item \verb|\secondsupervisor{...}|, \verb|\secondsupervisortitle{...}|, \\
+  \verb|\secondsupervisordepartment{...}|,
+  \item \verb|\consultant{...}|, \verb|\consultantposition{...}|,\\
+   \verb|\consultantworkplace{...}|.
+\end{itemize}
+
+\noindent
+A \texttt{code/ch01-supervisors.tex} fájl egy teljes példát tartalmaz ezekre:
+
+\inputcode[Témavezetők és konzulens megadása]{TeX}{code/ch01-supervisors.tex}

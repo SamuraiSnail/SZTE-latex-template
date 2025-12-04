@@ -44,6 +44,12 @@ bindingoffset=1cm
 \RequirePackage{caption}
 \setlength{\marginparwidth}{2cm}
 
+% --- Matematika ábrákhoz szükséges csomagok ---
+\RequirePackage{tikz}
+\RequirePackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{arrows.meta,positioning}
+
 \RequirePackage[backend=biber,style=ieee,sorting=none]{biblatex}
 
 % ==================================================
@@ -104,6 +110,8 @@ bindingoffset=1cm
 \newboolean{showtables}\setboolean{showtables}{true}
 \newboolean{showcode}\setboolean{showcode}{true}
 \newboolean{showtodos}\setboolean{showtodos}{true}
+% Matematikai ábrák külön kapcsolója
+\newboolean{showmathfigures}\setboolean{showmathfigures}{true}
 
 % --- Titkos dolgozat kapcsoló
 \newboolean{confidential}
@@ -203,6 +211,11 @@ bindingoffset=1cm
 % === 14. KÓD (SYNTAX HIGHLIGHT + IMPORT) ===
 % ==================================================
 \RequirePackage{listings}
+\RequirePackage{listingsutf8}
+
+\lstset{
+	inputencoding=utf8,
+}
 
 \definecolor{codebg}{RGB}{248,248,248}
 \definecolor{codecomment}{RGB}{0,128,0}
@@ -267,7 +280,7 @@ bindingoffset=1cm
 		}{%
 			\comment
 		}%
-	}
+	}%
 	{%
 		\ifthenelse{\boolean{showfigures}}{\end{figure}}{\endcomment}%
 }
@@ -280,9 +293,23 @@ bindingoffset=1cm
 		}{%
 			\comment
 		}%
-	}
+	}%
 	{%
 		\ifthenelse{\boolean{showtables}}{\end{table}}{\endcomment}%
+}
+
+% --- Matematikai ábra külön kapcsolóval ---
+\newenvironment{safemathfigure}
+{%
+	\ifthenelse{\boolean{showmathfigures}}{%
+		\Needspace{4\baselineskip}%
+		\begin{figure}[ht]
+		}{%
+			\comment
+		}%
+	}%
+	{%
+		\ifthenelse{\boolean{showmathfigures}}{\end{figure}}{\endcomment}%
 }
 
 % ==================================================

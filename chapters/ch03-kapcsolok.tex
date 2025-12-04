@@ -1,0 +1,30 @@
+
+\chapter{Kapcsolók és kikapcsolható elemek}
+
+A \texttt{szte-thesis} osztály több logikai kapcsolót definiál, amelyekkel az ábrák, táblázatok, kódrészletek, TODO-k és matematikai ábrák egyben ki- vagy bekapcsolhatók.  
+Ezek az \texttt{ifthen} csomag \verb|\setboolean| parancsát használják.  
+
+\section{Elérhető logikai kapcsolók}
+
+A következő logikai kapcsolók érhetők el:
+
+\begin{itemize}
+  \item \texttt{showfigures} -- ábrák (\verb|safefigure|) megjelenítése,
+  \item \texttt{showtables} -- táblázatok (\verb|safetable|) megjelenítése,
+  \item \texttt{showcode} -- kódrészletek (\verb|codeblock| és \verb|\inputcode|) megjelenítése,
+  \item \texttt{showtodos} -- \verb|\todoi| megjegyzések megjelenítése,
+  \item \texttt{showmathfigures} -- matematikai ábrák (\verb|safemathfigure|) megjelenítése.
+\end{itemize}
+
+\noindent
+\newpage
+A \texttt{code/ch03-switches.tex} fájl bemutatja, hogyan lehet ezeket egy helyen beállítani:
+
+\inputcode[Kapcsolók beállítása]{TeX}{code/ch03-switches.tex}
+
+\section{TODO megjegyzések kikapcsolása}
+
+A \verb|\todoi| parancs egy jól látható TODO dobozt jelenít meg a szövegben.  
+Ha a \texttt{showtodos} logikai kapcsoló értéke \verb|false|, akkor ezek egyáltalán nem jelennek meg a végleges PDF-ben.  
+
+\inputcode[TODO megjegyzés használata]{TeX}{code/ch03-todo-example.tex}

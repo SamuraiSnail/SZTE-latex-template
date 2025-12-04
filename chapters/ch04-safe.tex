@@ -1,0 +1,116 @@
+
+\chapter{Biztonságos (safe) környezetek}
+
+Ebben a fejezetben bemutatjuk az összes \texttt{safe*} környezetet: \verb|safefigure|, \verb|safetable| és \verb|safemathfigure|.  
+Ezek mind tiszteletben tartják a megfelelő logikai kapcsolókat, így szükség esetén egyetlen helyről elrejthetők.  
+
+\section{Külső kép \texttt{safefigure} környezettel}
+
+A külső képfájlokat (például \texttt{.png}, \texttt{.jpg}, \texttt{.pdf}) a \verb|\includegraphics| paranccsal illesztjük be.  
+A \verb|safefigure| környezet gondoskodik arról, hogy a \texttt{showfigures} logikai kapcsolóval az összes ábra elrejthető legyen.  
+
+\begin{safefigure}
+  \centering
+  \includegraphics[width=0.6\textwidth]{img/kittenroar.jpg}
+  \caption{Példa külső kép beillesztésére.}
+  \label{fig:external-image-example}
+\end{safefigure}
+
+\section{Táblázat \texttt{safetable} környezettel}
+
+A táblázatokhoz a \verb|safetable| környezetet használjuk, amely hasonlóan működik, mint a \verb|table|, de tiszteletben tartja a \texttt{showtables} logikai kapcsolót.  
+
+\inputcode[Minta \texttt{safetable} használat]{TeX}{code/ch04-table-example.tex}
+
+\section{Taylor-polinom és Lagrange-maradéktag}
+
+A matematikai képleteket a szokásos \verb|equation| vagy \verb|align| környezettel írjuk.  
+Példaként nézzük a Taylor-polinom képletét Lagrange-maradéktaggal.  
+
+Legyen \(f\) \((n+1)\)-szer folytonosan deriválható egy \(a\)-t és \(x\)-et tartalmazó intervallumon.  
+Ekkor az \(f\) függvény \(n\)-edfokú Taylor-polinomja az \(a\) pont körül:
+
+\begin{equation}
+  T_n(x)
+  =
+  \sum_{k=0}^{n} \frac{f^{(k)}(a)}{k!} (x-a)^k.
+\end{equation}
+
+A függvény értékét az \(n\)-edfokú Taylor-polinom és a maradéktag összegeként írhatjuk:
+
+\begin{equation}
+  f(x)
+  =
+  T_n(x)
+  +
+  R_{n+1}(x).
+\end{equation}
+
+A Lagrange-féle maradéktag alakja:
+
+\begin{equation}
+  R_{n+1}(x)
+  =
+  \frac{f^{(n+1)}(\xi)}{(n+1)!} (x-a)^{n+1},
+  \qquad
+  \xi \text{ az } a \text{ és } x \text{ közötti pont.}
+\end{equation}
+
+Ha ezt grafikonként is ábrázolni szeretnénk, célszerű a \verb|safemathfigure| környezetet használni.  
+
+\section{Irányított gráf \texttt{safemathfigure} és TikZ segítségével}
+
+Az alábbi példa egy három csúcsból álló irányított gráfot mutat, TikZ segítségével, biztonságos matematikai ábraként:  
+
+\begin{safemathfigure}
+  \centering
+  \begin{tikzpicture}[>=Stealth, node distance=2.5cm]
+    \tikzset{vertex/.style={circle,draw,minimum size=1cm}}
+    \node[vertex] (v1) {$1$};
+    \node[vertex,right=of v1] (v2) {$2$};
+    \node[vertex,below=of v1] (v3) {$3$};
+
+    \draw[->] (v1) -- (v2);
+    \draw[->] (v2) -- (v3);
+    \draw[->] (v1) -- (v3);
+  \end{tikzpicture}
+  \caption{Egyszerű irányított gráf három csúccsal.}
+  \label{fig:directed-graph-example}
+\end{safemathfigure}
+
+\section{Függvény grafikonja \texttt{safemathfigure} és \texttt{pgfplots} használatával}
+
+A \texttt{pgfplots} csomaggal függvénygrafikonokat rajzolhatunk közvetlenül a \LaTeX{} dokumentumban.  
+Az alábbi példa a \(y = \sin x\) függvényt ábrázolja az \([0, 2\pi]\) intervallumon:  
+
+\begin{safemathfigure}
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+      width=0.75\textwidth,
+      height=6cm,
+      xlabel={$x$},
+      ylabel={$y$},
+      domain=0:6.28318,
+      samples=200,
+      grid=both,
+      xmin=0, xmax=6.28318,
+      ymin=-1.2, ymax=1.2,
+      xtick={0,1.5708,3.1416,4.7124,6.2832},
+      xticklabels={$0$, $\frac{\pi}{2}$, $\pi$, $\frac{3\pi}{2}$, $2\pi$},
+    ]
+      \addplot[thick] {sin(deg(x))};
+    \end{axis}
+  \end{tikzpicture}
+  \caption{$y = \sin x$ grafikonja az $[0, 2\pi]$ intervallumon.}
+  \label{fig:sin-plot-example}
+\end{safemathfigure}
+\newpage
+\section{Matematikai ábrák kikapcsolása}
+
+Ha a dolgozat egy vázlatosabb verzióját szeretnénk generálni, előfordulhat, hogy a matematikai ábrákat ideiglenesen el szeretnénk rejteni.  
+Ezt megtehetjük a \texttt{showmathfigures} logikai kapcsolóval, amely a \texttt{szte-thesis.cls} fájlban van definiálva.  
+
+\begin{codeblock}[caption={Matematikai ábrák kikapcsolása}]{TeX}
+\setboolean{showmathfigures}{false}
+\end{codeblock}

@@ -1,0 +1,24 @@
+
+\chapter{Fedlap és nyilatkozat}
+
+A \texttt{szte-thesis} osztály két speciális parancsot ad a fedlap és a nyilatkozat automatikus létrehozására.  
+Az első a \verb|\makecover|, amely a metaadatok alapján elkészíti a dolgozat fedlapját.  
+A második a \verb|\printdeclaration|, amely létrehozza a „Nyilatkozat” fejezetet.  
+
+\section{Fedlap: \texttt{\textbackslash makecover}}
+
+A fedlap a metaadatokból épül fel (\verb|\title|, \verb|\author|, \verb|\program|, \verb|\degreeTitle| stb.).  
+A felhasználó számára mindössze annyi a teendő, hogy a metaadatok beállítása után meghívja a \verb|\makecover| parancsot a dokumentum elején.  
+
+\begin{codeblock}[caption={Fedlap létrehozása a fő fájlban}]{TeX}
+\makecover
+\end{codeblock}
+
+\section{Nyilatkozat: \texttt{\textbackslash printdeclaration}}
+
+A \verb|\printdeclaration| parancs létrehozza a „Nyilatkozat” fejezetet.  
+A szövegben egyértelműen szerepel, hogy ha a szakdolgozat titkosított, akkor a \verb|confidential| logikai kapcsoló értéke \verb|true|, egyébként \verb|false|.  
+
+\begin{codeblock}[caption={Nyilatkozat beillesztése}]{TeX}
+\printdeclaration
+\end{codeblock}
