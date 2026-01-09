@@ -114,3 +114,56 @@ Ezt megtehetjük a \texttt{showmathfigures} logikai kapcsolóval, amely a \textt
 \begin{codeblock}[caption={Matematikai ábrák kikapcsolása}]{TeX}
 \setboolean{showmathfigures}{false}
 \end{codeblock}
+
+\section{UML diagramok (kikapcsolható ábrák)}
+
+Ebben a részben néhány gyakori UML diagramtípust mutatunk be.
+Minden példa \texttt{safefigure} környezetben van.
+A példák forrása a \texttt{code/} mappában található.
+A fejezetben az \verb|\inputcode| parancs importálja a forrást.
+A PDF-ben az ábra a \verb|\input{...}| paranccsal kerül be.
+
+\subsection{UML osztálydiagram (class diagram)}
+
+\inputcode[UML class diagram forras]{TeX}{code/ch04-uml-class.tex}
+
+\begin{safefigure}
+	\centering
+	\input{code/ch04-uml-class.tex}
+	\caption{UML osztalydiagram pelda.}
+	\label{fig:uml-class}
+\end{safefigure}
+
+\subsection{UML szekvenciadiagram (sequence diagram)}
+
+\inputcode[UML sequence diagram forras]{TeX}{code/ch04-uml-sequence.tex}
+
+\begin{safefigure}
+	\centering
+	\input{code/ch04-uml-sequence.tex}
+	\caption{UML szekvenciadiagram pelda.}
+	\label{fig:uml-sequence}
+\end{safefigure}
+
+\subsection{UML use case diagram}
+
+\inputcode[UML use case diagram forras]{TeX}{code/ch04-uml-usecase.tex}
+
+\begin{safefigure}
+	\centering
+	\input{code/ch04-uml-usecase.tex}
+	\caption{UML use case diagram pelda.}
+	\label{fig:uml-usecase}
+\end{safefigure}
+
+\subsection{Allapotgep diagram (state machine jellegu)}
+
+\inputcode[Allapotgep diagram forras]{TeX}{code/ch04-uml-state.tex}
+
+\begin{safefigure}
+	\centering
+	\input{code/ch04-uml-state.tex}
+	\caption{Allapotgep pelda (UML state machine jelleg).}
+	\label{fig:uml-state}
+\end{safefigure}
+

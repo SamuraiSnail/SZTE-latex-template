@@ -1,0 +1,13 @@
+\begin{tikzpicture}
+	\umlactor[x=0,y=0]{User}
+	
+	\begin{umlsystem}[x=5,y=0]{WebApp}
+		\umlusecase[name=ucLogin,y=1]{Login}
+		\umlusecase[name=ucPlaceOrder,y=-1]{PlaceOrder}
+		\umlusecase[name=ucTrackOrder,y=-3]{TrackOrder}
+	\end{umlsystem}
+	
+	\umlassoc{User}{ucLogin}
+	\umlassoc{User}{ucPlaceOrder}
+	\umlassoc{User}{ucTrackOrder}
+\end{tikzpicture}

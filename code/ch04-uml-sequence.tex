@@ -1,0 +1,14 @@
+\begin{sequencediagram}
+  \newthread{u}{User}
+  \newinst{c}{Controller}
+  \newinst{s}{Service}
+  \newinst{r}{Repo}
+
+  \begin{call}{u}{createOrder()}{c}{orderId}
+    \begin{call}{c}{validate()}{s}{ok}
+    \end{call}
+    \begin{call}{c}{save(order)}{r}{ok}
+    \end{call}
+  \end{call}
+\end{sequencediagram}
+

@@ -1,0 +1,15 @@
+\begin{tikzpicture}[>=Stealth, node distance=3.2cm, on grid, auto]
+  \node[state, initial] (new) {NEW};
+  \node[state, right=of new] (paid) {PAID};
+  \node[state, below=of paid] (shipped) {SHIPPED};
+  \node[state, right=of shipped] (done) {DONE};
+  \node[state, below=of new] (canceled) {CANCELED};
+
+  \path[->]
+    (new) edge node {pay} (paid)
+    (paid) edge node {ship} (shipped)
+    (shipped) edge node {deliver} (done)
+    (new) edge node {cancel} (canceled)
+    (paid) edge node {cancel} (canceled);
+\end{tikzpicture}
+

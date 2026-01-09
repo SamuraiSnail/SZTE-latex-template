@@ -1,0 +1,17 @@
+\begin{tikzpicture}
+  \umlclass[x=0,y=0]{User}
+  {+id: int\\+name: string}
+  {+login()\\+logout()}
+
+  \umlclass[x=6,y=0]{Order}
+  {+number: string\\+createdAt: date}
+  {+total(): money}
+
+  \umlclass[x=3,y=-3]{OrderItem}
+  {+sku: string\\+qty: int}
+  {}
+
+  \umluniassoc[mult1=1,mult2=0..*]{User}{Order}
+  \umlcompo[mult2=1..*]{Order}{OrderItem}
+\end{tikzpicture}
+

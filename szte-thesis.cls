@@ -51,6 +51,9 @@ bindingoffset=1cm
 \usetikzlibrary{arrows.meta,positioning}
 
 \RequirePackage[backend=biber,style=ieee,sorting=none]{biblatex}
+\RequirePackage{tikz-uml}
+\RequirePackage{pgf-umlsd}
+\usetikzlibrary{automata}
 
 % ==================================================
 % === 5. SORTÁVOLSÁG, TARTALOMJEGYZÉK ===
